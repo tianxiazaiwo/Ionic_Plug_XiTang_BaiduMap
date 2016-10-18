@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_zhazhanzhuantai"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.baidu.mapapi.map.MapView
+                android:id="@+id/mv_ZhaZhanMapView"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:clickable="false"></com.baidu.mapapi.map.MapView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="闸门状态:"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <RadioGroup
+                    android:id="@+id/rg_waterGateStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_open"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/select_radiobtn_watergatestatus"
+                        android:button="@null"
+                        android:textColor="@android:color/black"
+                        android:gravity="center"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="打 开" />
+
+                    <RadioButton
+                        android:id="@+id/rb_close"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/select_radiobtn_watergatestatus"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="关 闭" />
+                </RadioGroup>
+            </LinearLayout>
+            <!--闸门描述-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="闸门描述:"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/edt_WaterGateDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@android:color/black"
+                        android:textColorHint="#666666"
+                    android:background="@drawable/button_white_kongxin"
+                    android:hint="请填写闸门的描述"
+                    android:padding="5dp"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!--拍照上传-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="闸门照片:"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <com.sdr.sluicemapplugin.view.MyGridView
+                android:id="@+id/gv_photos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginTop="5dp"
+                android:horizontalSpacing="2dp"
+                android:numColumns="3"
+                android:verticalSpacing="3dp"></com.sdr.sluicemapplugin.view.MyGridView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3D51B4"
+        android:text="上 报"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+</LinearLayout>

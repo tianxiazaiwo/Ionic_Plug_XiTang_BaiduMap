@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-sluiceMap" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>sluiceMap</name>
+    <author>homelajiang@163.com</author>
+    <description>a sluice plugin of sdr company</description>
+    <keywords>location,baidu,sluice</keywords>
+    <engines>
+        <engine name="cordova" version="&gt;=3.7.0"/>
+    </engines>
+    <js-module name="sluiceMap" src="www/sluiceMap.js">
+        <clobbers target="cordova.plugins.sluiceMap"/>
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="sluiceMapManager">
+                <param name="android-package" value="com.sdr.sluicemapplugin.plugin.SluiceMapManager"/>
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml">
+
+          <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+          <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+          <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+          <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+          <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+          <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+          <uses-permission android:name="android.permission.INTERNET" />
+
+          <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+          <uses-permission android:name="android.permission.CAMERA" />
+
+        </config-file>
+
+        <config-file parent="/manifest/application" target="AndroidManifest.xml">
+
+            <meta-data
+                    android:name="com.baidu.lbsapi.API_KEY"
+                    android:value="00L6jWc13qR58WOgzkwpWjI05AFiq3no"/>
+          <activity
+            android:name="com.sdr.sluicemapplugin.activities.ZhaZhanFenBu"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:screenOrientation="portrait"></activity>
+          <activity
+            android:name="com.sdr.sluicemapplugin.activities.ZhaZhanZhuangTai"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+        </config-file>
+
+        <config-file parent="/*" target="res/values/strings.xml">
+          <style name="GatelistDialog" parent="Theme.AppCompat.Dialog">
+            <item name="android:windowBackground">@android:color/transparent</item>
+            <item name="android:windowNoTitle">true</item>
+            <item name="android:windowIsFloating">true</item>
+            <item name="android:backgroundDimEnabled">true</item>
+          </style>
+
+          <style name="ShowPopwindow" parent="android:Animation">
+            <item name="android:windowEnterAnimation">@anim/popshow_anim</item>
+            <item name="android:windowExitAnimation">@anim/pophidden_anim</item>
+          </style>
+        </config-file>
+
+        <!--source file-->
+        <source-file src="src/android/java/activities/ZhaZhanFenBu.java" target-dir="src/com/sdr/sluicemapplugin/activities"/>
+        <source-file src="src/android/java/activities/ZhaZhanZhuangTai.java" target-dir="src/com/sdr/sluicemapplugin/activities"/>
+        <source-file src="src/android/java/adapter/GatelistDialogAdapter.java" target-dir="src/com/sdr/sluicemapplugin/adapter"/>
+        <source-file src="src/android/java/bean/PersonPosition.java" target-dir="src/com/sdr/sluicemapplugin/bean"/>
+        <source-file src="src/android/java/bean/WaterGateBean.java" target-dir="src/com/sdr/sluicemapplugin/bean"/>
+        <source-file src="src/android/java/plugin/SluiceMapManager.java" target-dir="src/com/sdr/sluicemapplugin/plugin"/>
+        <source-file src="src/android/java/view/MyGridView.java" target-dir="src/com/sdr/sluicemapplugin/view"/>
+
+        <!--resource file-->
+        <!--<source-file src="src/android/anim/anim_rotate.xml" target-dir="res/anim"/>-->
+        <source-file src="src/android/res/anim/anim_rotate.xml" target-dir="res/anim"/>
+        <source-file src="src/android/res/anim/pophidden_anim.xml" target-dir="res/anim"/>
+        <source-file src="src/android/res/anim/popshow_anim.xml" target-dir="res/anim"/>
+
+
+        <source-file src="src/android/res/drawable/background_dialog.xml" target-dir="res/drawable"/>
+        <source-file src="src/android/res/drawable/background_dialog_blue_top.xml" target-dir="res/drawable"/>
+        <source-file src="src/android/res/drawable/background_dialog_w_bottom.xml" target-dir="res/drawable"/>
+        <source-file src="src/android/res/drawable/button_white_kongxin.xml" target-dir="res/drawable"/>
+        <source-file src="src/android/res/drawable/infowindow_kuang.xml" target-dir="res/drawable"/>
+        <source-file src="src/android/res/drawable/infowindow_select_kuang.xml" target-dir="res/drawable"/>
+        <source-file src="src/android/res/drawable/popwindow_bg.xml" target-dir="res/drawable"/>
+        <source-file src="src/android/res/drawable/select_radiobtn_watergatestatus.xml" target-dir="res/drawable"/>
+
+
+        <source-file src="src/android/res/drawable-hdpi/btn_add_images.png" target-dir="res/drawable-hdpi"/>
+        <source-file src="src/android/res/drawable-hdpi/current_position.png" target-dir="res/drawable-hdpi"/>
+        <source-file src="src/android/res/drawable-hdpi/delete_photo.png" target-dir="res/drawable-hdpi"/>
+        <source-file src="src/android/res/drawable-hdpi/dialog_uploading.png" target-dir="res/drawable-hdpi"/>
+        <source-file src="src/android/res/drawable-hdpi/icon_map_mark.png" target-dir="res/drawable-hdpi"/>
+        <source-file src="src/android/res/drawable-hdpi/webcam.png" target-dir="res/drawable-hdpi"/>
+        <source-file src="src/android/res/drawable-hdpi/arrow_back_black.png" target-dir="res/drawable-hdpi"/>
+
+
+        <source-file src="src/android/res/layout/activity_zha_zhan_fen_bu.xml" target-dir="res/layout"/>
+        <source-file src="src/android/res/layout/activity_zha_zhan_zhuang_tai.xml" target-dir="res/layout"/>
+        <source-file src="src/android/res/layout/customer_dialog.xml" target-dir="res/layout"/>
+        <source-file src="src/android/res/layout/customer_dialog_listview_item.xml" target-dir="res/layout"/>
+        <source-file src="src/android/res/layout/customer_dialog_showgatelist.xml" target-dir="res/layout"/>
+        <source-file src="src/android/res/layout/item_gridview_takephotos.xml" target-dir="res/layout"/>
+        <source-file src="src/android/res/layout/marker_infowindow.xml" target-dir="res/layout"/>
+        <source-file src="src/android/res/layout/popwindow_takephoto_album.xml" target-dir="res/layout"/>
+        <source-file src="src/android/res/layout/simple_list_item.xml" target-dir="res/layout"/>
+        <source-file src="src/android/res/layout/baidumap_actionbar_custom.xml" target-dir="res/layout"/>
+
+        <!--lib file-->
+        <source-file src="src/android/libs/armeabi/libBaiduMapSDK_base_v4_0_0.so" target-dir="libs/armeabi"/>
+        <source-file src="src/android/libs/armeabi/libBaiduMapSDK_cloud_v4_0_0.so" target-dir="libs/armeabi"/>
+        <source-file src="src/android/libs/armeabi/libBaiduMapSDK_map_v4_0_0.so" target-dir="libs/armeabi"/>
+        <source-file src="src/android/libs/armeabi/libBaiduMapSDK_radar_v4_0_0.so" target-dir="libs/armeabi"/>
+        <source-file src="src/android/libs/armeabi/libBaiduMapSDK_search_v4_0_0.so" target-dir="libs/armeabi"/>
+        <source-file src="src/android/libs/armeabi/libBaiduMapSDK_util_v4_0_0.so" target-dir="libs/armeabi"/>
+        <source-file src="src/android/libs/armeabi/liblocSDK7.so" target-dir="libs/armeabi"/>
+
+        <!--<source-file src="src/android/libs/arm64-v8a/libBaiduMapSDK_base_v4_0_0.so" target-dir="libs/arm64-v8a"/>-->
+        <!--<source-file src="src/android/libs/arm64-v8a/libBaiduMapSDK_cloud_v4_0_0.so" target-dir="libs/arm64-v8a"/>-->
+        <!--<source-file src="src/android/libs/arm64-v8a/libBaiduMapSDK_map_v4_0_0.so" target-dir="libs/arm64-v8a"/>-->
+        <!--<source-file src="src/android/libs/arm64-v8a/libBaiduMapSDK_radar_v4_0_0.so" target-dir="libs/arm64-v8a"/>-->
+        <!--<source-file src="src/android/libs/arm64-v8a/libBaiduMapSDK_search_v4_0_0.so" target-dir="libs/arm64-v8a"/>-->
+        <!--<source-file src="src/android/libs/arm64-v8a/libBaiduMapSDK_util_v4_0_0.so" target-dir="libs/arm64-v8a"/>-->
+        <!--<source-file src="src/android/libs/arm64-v8a/liblocSDK7.so" target-dir="libs/arm64-v8a"/>-->
+
+        <!--<source-file src="src/android/libs/armeabi-v7a/libBaiduMapSDK_base_v4_0_0.so" target-dir="libs/armeabi-v7a"/>-->
+        <!--<source-file src="src/android/libs/armeabi-v7a/libBaiduMapSDK_cloud_v4_0_0.so" target-dir="libs/armeabi-v7a"/>-->
+        <!--<source-file src="src/android/libs/armeabi-v7a/libBaiduMapSDK_map_v4_0_0.so" target-dir="libs/armeabi-v7a"/>-->
+        <!--<source-file src="src/android/libs/armeabi-v7a/libBaiduMapSDK_radar_v4_0_0.so" target-dir="libs/armeabi-v7a"/>-->
+        <!--<source-file src="src/android/libs/armeabi-v7a/libBaiduMapSDK_search_v4_0_0.so" target-dir="libs/armeabi-v7a"/>-->
+        <!--<source-file src="src/android/libs/armeabi-v7a/libBaiduMapSDK_util_v4_0_0.so" target-dir="libs/armeabi-v7a"/>-->
+        <!--<source-file src="src/android/libs/armeabi-v7a/liblocSDK7.so" target-dir="libs/armeabi-v7a"/>-->
+
+        <!--<source-file src="src/android/libs/x86/libBaiduMapSDK_base_v4_0_0.so" target-dir="libs/x86"/>-->
+        <!--<source-file src="src/android/libs/x86/libBaiduMapSDK_cloud_v4_0_0.so" target-dir="libs/x86"/>-->
+        <!--<source-file src="src/android/libs/x86/libBaiduMapSDK_map_v4_0_0.so" target-dir="libs/x86"/>-->
+        <!--<source-file src="src/android/libs/x86/libBaiduMapSDK_radar_v4_0_0.so" target-dir="libs/x86"/>-->
+        <!--<source-file src="src/android/libs/x86/libBaiduMapSDK_search_v4_0_0.so" target-dir="libs/x86"/>-->
+        <!--<source-file src="src/android/libs/x86/libBaiduMapSDK_util_v4_0_0.so" target-dir="libs/x86"/>-->
+        <!--<source-file src="src/android/libs/x86/liblocSDK7.so" target-dir="libs/x86"/>-->
+
+        <!--<source-file src="src/android/libs/x86_64/libBaiduMapSDK_base_v4_0_0.so" target-dir="libs/x86_64"/>-->
+        <!--<source-file src="src/android/libs/x86_64/libBaiduMapSDK_cloud_v4_0_0.so" target-dir="libs/x86_64"/>-->
+        <!--<source-file src="src/android/libs/x86_64/libBaiduMapSDK_map_v4_0_0.so" target-dir="libs/x86_64"/>-->
+        <!--<source-file src="src/android/libs/x86_64/libBaiduMapSDK_radar_v4_0_0.so" target-dir="libs/x86_64"/>-->
+        <!--<source-file src="src/android/libs/x86_64/libBaiduMapSDK_search_v4_0_0.so" target-dir="libs/x86_64"/>-->
+        <!--<source-file src="src/android/libs/x86_64/libBaiduMapSDK_util_v4_0_0.so" target-dir="libs/x86_64"/>-->
+        <!--<source-file src="src/android/libs/x86_64/liblocSDK7.so" target-dir="libs/x86_64"/>-->
+
+        <!--<source-file src="src/android/libs/android-support-v4.jar" target-dir="libs/"/>-->
+        <source-file src="src/android/libs/BaiduLBS_Android.jar" target-dir="libs/"/>
+        <source-file src="src/android/libs/commons-codec-1.6.jar" target-dir="libs/"/>
+        <source-file src="src/android/libs/commons-logging-1.1.1.jar" target-dir="libs/"/>
+        <source-file src="src/android/libs/fluent-hc-4.2.2.jar" target-dir="libs/"/>
+        <source-file src="src/android/libs/glide-3.7.0.jar" target-dir="libs/"/>
+        <source-file src="src/android/libs/gson-2.3.1.jar" target-dir="libs/"/>
+        <source-file src="src/android/libs/httpclient-4.2.2.jar" target-dir="libs/"/>
+        <source-file src="src/android/libs/httpclient-cache-4.2.2.jar" target-dir="libs/"/>
+        <source-file src="src/android/libs/httpcore-4.2.2.jar" target-dir="libs/"/>
+        <source-file src="src/android/libs/httpmime-4.2.2.jar" target-dir="libs/"/>
+
+
+        <framework src="com.android.support:appcompat-v7:23.4.0" />
+
+    </platform>
+</plugin>

@@ -1,0 +1,24 @@
+<android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--主要内容的视图-->
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/mv_ZhaZhanFenBu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true" />
+    <!--左侧导航视图-->
+    <ListView
+        android:id="@+id/left_drawer"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        android:choiceMode="singleChoice"
+        android:dividerHeight="0dp"
+        android:scrollbars="none">
+    </ListView>
+
+</android.support.v4.widget.DrawerLayout>
